@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/siren/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/siren/static/js/main.eaeb3d98.chunk.js",
+    "main.js.map": "/siren/static/js/main.eaeb3d98.chunk.js.map",
+    "runtime-main.js": "/siren/static/js/runtime-main.4daf16a7.js",
+    "runtime-main.js.map": "/siren/static/js/runtime-main.4daf16a7.js.map",
+    "static/js/2.5b893ba1.chunk.js": "/siren/static/js/2.5b893ba1.chunk.js",
+    "static/js/2.5b893ba1.chunk.js.map": "/siren/static/js/2.5b893ba1.chunk.js.map",
+    "static/js/3.c5444972.chunk.js": "/siren/static/js/3.c5444972.chunk.js",
+    "static/js/3.c5444972.chunk.js.map": "/siren/static/js/3.c5444972.chunk.js.map",
+    "index.html": "/siren/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/siren/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.5b893ba1.chunk.js.LICENSE.txt": "/siren/static/js/2.5b893ba1.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/siren/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4daf16a7.js",
+    "static/js/2.5b893ba1.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.eaeb3d98.chunk.js"
+  ]
+}
