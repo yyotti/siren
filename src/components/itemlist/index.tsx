@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,27 +9,49 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import ItemType from './ItemType';
 import ShowAllSwitch from './ShowAllSwitch';
+import { Item, ItemStatus, ItemType as IType } from '../../types';
+import { ITEMS } from '../../constants';
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-});
-
-const createData = (type: number, name: string, price: number, status: number, detected: boolean) => {
-  return { type, name, price, status, detected };
+export type ListItemType = {
+  type: IType,
+  name: string,
+  status: ItemStatus,
+  isDetected: boolean,
 }
 
+const createData = (item: Item, status: ItemStatus, isDetected: boolean): ListItemType => {
+  return { type: item.type, name: item.name, status, isDetected };
+}
 
-const rows = [
-  createData(0, 'ただの棒', 105, 0, false),
-  createData(1, 'ただの木の盾', 210, 1, true),
-  createData(2, '透視の腕輪', 30000, -2, false),
-];
+// FIXME どっかに移動する
+const itemTypeToString = (type: IType) => {
+  switch (type) {
+    case IType.WEAPON:
+      return '武器';
+    case IType.SHIELD:
+      return '盾';
+    case IType.BRACELET:
+      return '腕輪';
+    case IType.SCROLL:
+      return '巻物';
+    case IType.GRASS:
+      return '草';
+    case IType.VASE:
+      return '壺';
+    case IType.CANE:
+      return '杖';
+    default:
+      return '??';
+  }
+}
+
+// FIXME どっかに移動する
+const itemStatusToString = (s: ItemStatus) =>
+  s === ItemStatus.BAD ? '呪' : s === ItemStatus.GOOD ? '祝' : '';
+
+const rows = ITEMS.map((item: Item) => createData(item, ItemStatus.BAD, true));
 
 const ItemList = () => {
-  const classes = useStyles();
-
   // TODO テーブルじゃなくてアイコン並べるだけでも表現できそう
   return (
     <Grid container>
@@ -44,7 +65,7 @@ const ItemList = () => {
       </Grid>
       <Grid container direction="row">
         <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label="Item table">
+          <Table aria-label="Item table">
             <TableHead>
               <TableRow>
                 <TableCell>種別</TableCell>
@@ -56,15 +77,11 @@ const ItemList = () => {
             <TableBody>
               {rows.map((row) => (
                 <TableRow key={row.name}> {/* TODO IDか何かにする */}
-                  <TableCell align="center">
-                    {row.type === 0 ? '武器' : row.type === 1 ? '盾' : '腕輪'}
-                  </TableCell>
+                  <TableCell align="center">{itemTypeToString(row.type)}</TableCell>
                   <TableCell component="th" scope="row">{row.name}</TableCell>
+                  <TableCell align="center">{itemStatusToString(row.status)}</TableCell>
                   <TableCell align="center">
-                    {row.status < 0 ? '呪' : row.status > 0 ? '祝' : ''}
-                  </TableCell>
-                  <TableCell align="center">
-                    {row.detected ? '済' : ''}
+                    {row.isDetected ? '済' : ''}
                   </TableCell>
                 </TableRow>
               ))}
