@@ -1,0 +1,13 @@
+version: "3.4"
+
+services:
+  dev-server:
+    build: ./docker
+    container_name: siren
+    ports:
+      - "${APP_PORT:-8888}:3000"
+    environment:
+      - TZ=Asia/Tokyo
+    volumes:
+      - .:/app
+    working_dir: /app
