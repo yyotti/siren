@@ -31,6 +31,12 @@ docker-compose up
 
 サーバが起動したら `http://localhost:8888`にアクセス。
 
+### パッケージ追加
+
+```sh
+docker-compose run --rm dev-server yarn add [追加するnpmパッケージ]
+```
+
 ### `gh-pages`
 
 (TODO)
