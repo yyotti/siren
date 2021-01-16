@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+# 風来のシレン アイテム識別補助ツール
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+風来のシレンでアイテムを値段識別する際の補助ツール。
 
-## Available Scripts
+2021/01/16時点では、風来のシレン5plusにのみ対応。
 
-In the project directory, you can run:
+## 開発メモ
 
-### `yarn start`
+風来のシレンとは無関係だが開発のためのメモを残しておく。
+基本的に全部Dockerでやる。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `create-react-app`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+プロジェクト作成時に一度だけ叩く。
 
-### `yarn test`
+```sh
+docker run -it --rm \
+  -v "$PWD/app:/app" \
+  -w /app \
+  -u "$UID" \
+  node:15.5.1-alpine \
+  npx create-react-app app-name --template typescript
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### ローカル開発環境
 
-### `yarn build`
+```sh
+docker-compose build  # 初回のみ
+docker-compose up
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+サーバが起動したら `http://localhost:8888`にアクセス。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `gh-pages`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+(TODO)
