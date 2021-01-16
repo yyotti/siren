@@ -1,17 +1,18 @@
 import React from 'react';
+import { Grid } from '@material-ui/core';
 import PriceType from './PriceType';
 import PriceInput from './PriceInput';
-import ItemType from './ItemType';
-import ShowAllSwitch from './ShowAllSwitch';
 
 const Condition = () => {
   return (
-    <>
-      <PriceType />
-      <PriceInput />
-      <ItemType />
-      <ShowAllSwitch />
-    </>
+    <Grid container>
+      <Grid item>
+        <PriceType />
+      </Grid>
+      <Grid item>
+        <PriceInput />
+      </Grid>
+    </Grid>
   );
 }
 

@@ -20,7 +20,7 @@ const ShowAllSwitch = () => {
           color="primary"
         />
       }
-      label="識別済みは表示しない"
+      label="識別済みは非表示"
     />
   );
 }
